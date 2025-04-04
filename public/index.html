@@ -1,0 +1,49 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeAPI con Node.js</title>
+  <link rel="stylesheet" href="index.css">
+  <img src="International_Pokémon_logo.png" height="75" width="204">
+</head>
+<body>
+  <h2 class="Busca_el_poke">¡Informacion directamente extraida de la Pokédex!</h2>
+  <input type="text" id="pokemon-name" placeholder="Nombre o numero del Pokémon"><br><br>
+  <button onclick="searchPokemon()">Buscar</button>
+
+  <div class="pokemon-info" id="pokemon-info"></div>
+
+  <script>
+    function searchPokemon() {
+      const name = document.getElementById('pokemon-name').value.toLowerCase();
+      const pokemonInfoDiv = document.getElementById('pokemon-info');
+
+      if (name) {
+        fetch(`/pokemon/${name}`)
+          .then(response => {
+            if (!response.ok) {
+              pokemonInfoDiv.innerHTML = 'Pokémon no encontrado';
+              throw new Error('Pokémon no encontrado');
+            }
+            return response.json();
+          })
+          .then(data => {
+            const html = `
+              <h2>${data.name}</h2>
+              <img src="${data.sprites.front_default}"  alt="${data.name}">
+              <p><strong>Altura:</strong> ${data.height / 10} m</p>
+              <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+              <p><strong>Habilidades:</strong> ${data.abilities.map(a => a.ability.name).join(', ')}</p>
+            `;
+            pokemonInfoDiv.innerHTML = html;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+    }
+  </script>
+</body>
+</html>

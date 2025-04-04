@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(7921445.jpg);
+    background-size: 100%;
+    text-align: center;
+}
+.pokemon-info {
+    margin-top: 20px;
+}
+.pokemon_logo{
+    scale: 50%;
+}
+.Busca_el_poke{
+    color: red;
+}
+strong{
+    color: rgb(33, 150, 17);
+}

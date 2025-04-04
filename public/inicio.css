@@ -1,0 +1,32 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color:#e6f32f;
+    background-image: url(7921445.jpg);
+    background-size: 100%;
+    text-align: center;
+    margin-top: 200px;
+}
+p {
+    font-size: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+h1 {
+    font-size: 40px;
+    color:#003e8f;
+    font-family: 'Courier New', Courier, monospace;
+}
+button {
+    background-color: #3e92ff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+button:hover {
+    color: white;
+    background-color: #7db5ff;
+}
